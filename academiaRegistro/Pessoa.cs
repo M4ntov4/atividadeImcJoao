@@ -1,4 +1,5 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,6 @@ namespace academiaRegistro
     class Pessoa
     {
         string nome;
-        string status;
         int idade;
         double peso;
         double altura;
@@ -20,7 +20,7 @@ namespace academiaRegistro
         public double Peso { get => peso; set => peso = value; }
         public double Altura { get => altura; set => altura = value; }
         public double Imc { get => imc; set => imc = value; }
-        public string Status { get => status; set => status = value; }
+
 
         public Pessoa(string nome, int age, double weight, double height)
         {
@@ -32,110 +32,61 @@ namespace academiaRegistro
             
         }
 
-        // Para Alterar os Atributos
-
-        public void AlterarNome(string nome)
-        {
-            this.Nome = nome;
-        }
-
-        public void Alteraridade(int idade)
-        {
-            this.Idade = idade;
-        }
-
-        public void AlterarPeso(double peso)
-        {
-            this.Peso = peso;
-        }
-
-        public void AlterarAltura(double altura)
-        {
-            this.Altura = altura;
-        }
-
-           // Para consultar os Atributos
-
-        public string LerNome()
-        {
-            return this.Nome;
-        }
-
-        public int LerIdade()
-        {
-            return this.Idade;
-        }
-
-        public double LerPeso()
-        {
-            return this.Peso;
-        }
-
-        public  double LerAltura()
-        {
-            return this.Altura;
-        }
-
-        public double LerImc()
-        {
-            return this.Imc;
-        }
-
-        public string LerStatus()
-        {
-            return this.Status;
-        }
+          //static posso chamar um metodo de onde quiser, sem precisar criar uma instancia "objeto"   
 
         // para calcular imc
 
-        public void CalcularImc()
+        public static double CalcularImc(double peso, double altura)
         {
-
-            this.Imc = this.peso / (this.altura * this.altura);
-
+           
+            return  peso / (altura * altura);
+             
         }
 
 
         // informar a tabela
-        public void DefinirIMC()
+        public static string DefinirIMC(double imc)
         {
-            if (this.Imc >= 40)
+            string status;
+
+            if (imc >= 40)
             {
-                this.Status = "Obesidade Grau 3";
+                 status = "Obesidade Grau 3";
             }
             else
             {
-                if (this.Imc >= 35 && this.Imc < 40)
+                if (imc >= 35 && imc < 40)
                 {
-                    this.Status = "Obesidade Grau 2";
+                     status = "Obesidade Grau 2";
                 }
                 else
                 {
-                    if (this.Imc >= 30 && this.Imc < 35)
+                    if (imc >= 30 && imc < 35)
                     {
-                        this.Status = "Obesidade Grau 1";
+                        status = "Obesidade Grau 1";
                     }
                     else
                     {
-                        if (this.Imc >=25 && this.Imc < 30)
+                        if (imc >=25 && imc < 30)
                         {
-                            this.Status = "SobrePeso";
+                            status = "SobrePeso";
                         }
                         else
                         {
-                            if (this.Imc >= 18.5 && this.Imc < 25)
+                            if (imc >= 18.5 && imc < 25)
                             {
-                                this.Status = "Peso Normal";
+                                status = "Peso Normal";
                             }
                             else
                             {
-                                this.Status = "Abaixo do Peso";
+                                status = "Abaixo do Peso";
                             }
                         }
                     }
                 }
             }
 
+            return status;
 
         }
 
